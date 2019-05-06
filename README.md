@@ -1,6 +1,6 @@
-#Java Academy JDBC and SQL Basics
+Java Academy JDBC and SQL Basics
 
-##Probleme:
+Probleme:
 
 1 Rezolvati urmatoarele exercitii SQL.(Va puteti face cont pe HackerRank, unde aveti la dispozitie 
 si alte tipuri de exercitii pe care le puteti incerca)
