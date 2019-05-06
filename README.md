@@ -3,7 +3,7 @@
 ##Probleme:
 
 1 Rezolvati urmatoarele exercitii SQL.(Va puteti face cont pe HackerRank, unde aveti la dispozitie 
-si alte tipuri de execertii pe care le puteti incerca)
+si alte tipuri de exercitii pe care le puteti incerca)
 
 - https://www.hackerrank.com/challenges/weather-observation-station-7/problem
 - https://www.hackerrank.com/challenges/salary-of-employees/problem
