@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        //Insert with statement
+        //Insert with statementt
         DatabaseManager.insertWithStatement();
         //Insert with prepared statement
         DatabaseManager.insertWithPreparedStatement();
