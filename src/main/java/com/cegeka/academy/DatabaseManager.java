@@ -11,8 +11,8 @@ public class DatabaseManager {
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager
-                .getConnection("jdbc:mysql://localhost:3306/cegeka",
-                        "root", "admin123!@#");
+                .getConnection("jdbc:mysql://localhost:3306/Cegeka",
+                        "root", "");
     }
 
     public static void insertWithStatement() throws SQLException, ClassNotFoundException {
@@ -161,4 +161,26 @@ public class DatabaseManager {
             System.out.println("Team: " + id + ", " + name + ", " + points);
         }
     }
+
+
+    //TODO1
+
+    public static void insertInPlayerWithPreparedStatement() throws SQLException, ClassNotFoundException {
+        System.out.println("Insert with Prepared Statement");
+
+        Connection connection = getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into player(name, number, id_team, position) values(?,?,?,?)");
+        preparedStatement.setString(1, "Ion");
+        preparedStatement.setInt(2, 11);
+        preparedStatement.setInt(3, 2);
+        preparedStatement.setString(4, "attack");
+
+        int result = preparedStatement.executeUpdate();
+        System.out.println("Result: " + result);
+
+        preparedStatement.close();
+        connection.close();
+        System.out.println("-----------------------------------------");
+    }
+
 }
