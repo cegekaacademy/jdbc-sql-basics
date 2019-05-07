@@ -162,24 +162,61 @@ public class DatabaseManager {
         }
     }
 
+    private static void showResultSetCustomValues(ResultSet resultSet) throws SQLException {
+        while (resultSet.next()) {
+            String name = resultSet.getString("player.name");
+            Integer number = resultSet.getInt("number");
+            String position = resultSet.getString("position");
+            String team = resultSet.getString("team.name");
 
-    public static void showAllPlayersForATeamWithSpecifiedStatement() throws SQLException, ClassNotFoundException {
-        System.out.println("Select with Prepared Statement");
+            System.out.println("Player: " + name + ", " + number + ", " + position + ", " + team);
+        }
+    }
+
+
+    public static void showAllPlayersForATeamWithPreparedStatement() throws SQLException, ClassNotFoundException {
+        System.out.println("Select all the players from a specific team");
         Connection connection = getConnection();
 
-        System.out.println("Select all");
-        PreparedStatement preparedStatement = connection.prepareStatement("select * from team");
-        ResultSet resultSet = preparedStatement.executeQuery();
-        showResultSetValues(resultSet);
+        System.out.println("TEAM FCSB");
+        PreparedStatement preparedStatement = connection.prepareStatement("select player.name, number, position, team.name from player inner join team on id_team=team.id where team.name=?");
 
-        System.out.println("\nSelect by name");
-        preparedStatement = connection.prepareStatement("select * from team where name=?");
         preparedStatement.setString(1, "FCSB");
-        resultSet = preparedStatement.executeQuery();
-        showResultSetValues(resultSet);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        showResultSetCustomValues(resultSet);
 
         preparedStatement.close();
         connection.close();
         System.out.println("-----------------------------------------");
     }
+
+
+    private static void showResultSetValuesForCount(ResultSet resultSet) throws SQLException {
+        while (resultSet.next()) {
+            String nameOfTeam = resultSet.getString("t.name");
+            Integer numberOfPlayers = resultSet.getInt("count(p.name)");
+
+            System.out.println("Team: " + name + ", " + number + ", " + position + ", " + team);
+        }
+    }
+
+    //select t.name, count(p.name) from player p, team t where p.id_team=t.id group by t.name;
+
+   /* public static void showAllPlayersForATeamWithPreparedStatement() throws SQLException, ClassNotFoundException {
+        System.out.println("Select all the players from a specific team");
+        Connection connection = getConnection();
+
+        System.out.println("TEAM FCSB");
+        PreparedStatement preparedStatement = connection.prepareStatement("select player.name, number, position, team.name from player inner join team on id_team=team.id where team.name=?");
+
+        preparedStatement.setString(1, "FCSB");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        showResultSetCustomValues(resultSet);
+
+        preparedStatement.close();
+        connection.close();
+        System.out.println("-----------------------------------------");
+    }*/
+
+
 }
