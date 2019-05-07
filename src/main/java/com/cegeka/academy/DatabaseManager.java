@@ -12,7 +12,7 @@ public class DatabaseManager {
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager
                 .getConnection("jdbc:mysql://localhost:3306/cegeka",
-                        "root", "admin123!@#");
+                        "root", "Marya.0920");
     }
 
     public static void insertWithStatement() throws SQLException, ClassNotFoundException {
@@ -160,5 +160,26 @@ public class DatabaseManager {
 
             System.out.println("Team: " + id + ", " + name + ", " + points);
         }
+    }
+
+
+    public static void showAllPlayersForATeamWithSpecifiedStatement() throws SQLException, ClassNotFoundException {
+        System.out.println("Select with Prepared Statement");
+        Connection connection = getConnection();
+
+        System.out.println("Select all");
+        PreparedStatement preparedStatement = connection.prepareStatement("select * from team");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        showResultSetValues(resultSet);
+
+        System.out.println("\nSelect by name");
+        preparedStatement = connection.prepareStatement("select * from team where name=?");
+        preparedStatement.setString(1, "FCSB");
+        resultSet = preparedStatement.executeQuery();
+        showResultSetValues(resultSet);
+
+        preparedStatement.close();
+        connection.close();
+        System.out.println("-----------------------------------------");
     }
 }

@@ -24,5 +24,7 @@ public class Main {
 
         //TODO CRUD for Player table
         //TODO display all players for a specified team
+        //TODO numarul de jucatori al fiecarei echipe
+
     }
 }
