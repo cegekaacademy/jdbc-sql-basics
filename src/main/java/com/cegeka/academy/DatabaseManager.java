@@ -12,12 +12,12 @@ public class DatabaseManager {
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager
                 .getConnection("jdbc:mysql://localhost:3306/cegeka",
-                        "root", "admin123!@#");
+                        "root", "georgiana123");
     }
 
     public static void insertWithStatement() throws SQLException, ClassNotFoundException {
         System.out.println("Insert with Statement");
-//aici
+
         Connection connection = getConnection();
         Statement statement = connection.createStatement();
 
@@ -30,6 +30,8 @@ public class DatabaseManager {
         connection.close();
         System.out.println("-----------------------------------------");
     }
+
+
 
     public static void insertWithPreparedStatement() throws SQLException, ClassNotFoundException {
         System.out.println("Insert with Prepared Statement");
@@ -161,4 +163,24 @@ public class DatabaseManager {
             System.out.println("Team: " + id + ", " + name + ", " + points);
         }
     }
+
+    //pentru tabela player
+    public static void insertWithPreparedStatementPlayer() throws SQLException, ClassNotFoundException {
+        System.out.println("Insert with Prepared Statement la player");
+
+        Connection connection = getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into team(name,number,id_team,position) values(?,?,?,?)");
+        preparedStatement.setString(1, "Cegeka Academy 2");
+        preparedStatement.setInt(2, 10);
+        preparedStatement.setInt(3,1);
+        preparedStatement.setString(4,"atac");
+
+        int result = preparedStatement.executeUpdate();
+        System.out.println("Result: " + result);
+
+        preparedStatement.close();
+        connection.close();
+        System.out.println("-----------------------------------------");
+    }
+
 }
