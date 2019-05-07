@@ -24,5 +24,8 @@ public class Main {
 
         //TODO CRUD for Player table
         //TODO display all players for a specified team
+        //TODO display number of players for a team
+
+        //DatabaseManager.
     }
 }

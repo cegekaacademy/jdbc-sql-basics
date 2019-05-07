@@ -9,10 +9,10 @@ import java.sql.Statement;
 
 public class DatabaseManager {
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver"); // va lua driver-ul de mysql si il urca in memorie
         return DriverManager
                 .getConnection("jdbc:mysql://localhost:3306/cegeka",
-                        "root", "admin123!@#");
+                        "root", "Ozzyeste1");
     }
 
     public static void insertWithStatement() throws SQLException, ClassNotFoundException {
@@ -24,6 +24,8 @@ public class DatabaseManager {
 
         //int result = statement.executeUpdate("insert into team values(1001,'CegekaAcademy',20)");
         //int result = statement.executeUpdate("insert into team values(null,'CegekaAcademy',20)");
+        // executeUpadate se foloseste pt modificari in bd
+        //executeQuery = cand nu se fac modificari
         int result = statement.executeUpdate("insert into team(name,points) values('CegekaAcademy',20)");
         System.out.println("Result: " + result);
 
@@ -162,4 +164,23 @@ public class DatabaseManager {
             System.out.println("Team: " + id + ", " + name + ", " + points);
         }
     }
+
+    public static void insertWithPreparedStatementPlayer() throws SQLException, ClassNotFoundException {
+        System.out.println("Insert with Prepared Statement Player");
+
+        Connection connection = getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into player (name, number, id_team, position)) values(?,?,?,?)");
+        preparedStatement.setString(1, "Cegeka Academy 2");
+        preparedStatement.setInt(2, 30);
+        preparedStatement.setInt(3,1);
+        preparedStatement.setString(4,"Attack");
+
+        int result = preparedStatement.executeUpdate();
+        System.out.println("Result: " + result);
+
+        preparedStatement.close();
+        connection.close();
+        System.out.println("-----------------------------------------");
+    }
+
 }
