@@ -17,6 +17,7 @@ public class DatabaseManager {
 
     public static void insertWithStatement() throws SQLException, ClassNotFoundException {
         System.out.println("Insert with Statement");
+        //comment
 
         Connection connection = getConnection();
         Statement statement = connection.createStatement();
