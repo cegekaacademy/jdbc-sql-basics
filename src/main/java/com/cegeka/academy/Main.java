@@ -1,28 +1,15 @@
 package com.cegeka.academy;
-
+import com.cegeka.academy.DatabaseManager;
+import exception.InvalidParametersException;
 
 import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        //Insert with statement
-        DatabaseManager.insertWithStatement();
-        //Insert with prepared statement
-        DatabaseManager.insertWithPreparedStatement();
-        //Select with statement
-        DatabaseManager.selectWithStatement();
-        //Select with prepared statement
-        DatabaseManager.selectWithPreparedStatement();
-        //Delete with statement
-        DatabaseManager.deleteWithStatement();
-        //Delete with prepared statement
-        DatabaseManager.deleteWithPreparedStatement();
-        //Update with statement
-        DatabaseManager.updateWithStatement();
-        //Update with prepared statement
-        DatabaseManager.updateWithPreparedStatement();
-
-        //TODO CRUD for Player table
-        //TODO display all players for a specified team
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, InvalidParametersException {
+        //DatabaseManager.insertPlayer("Bitica",10,3,"Defender");
+        // DatabaseManager.updatePlayer(13, 3, "Alexandru", -1,"Mijlocas");
+        //DatabaseManager.selectPlayer(null,-2,1,null);
+       // DatabaseManager.deletePlayer(null,-1,-1,"Mijlocas");
+       // DatabaseManager.selectFromTeam(1);
     }
 }
