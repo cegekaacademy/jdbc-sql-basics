@@ -11,5 +11,14 @@ public class Main {
         //DatabaseManager.selectPlayer(null,-2,1,null);
        // DatabaseManager.deletePlayer(null,-1,-1,"Mijlocas");
        // DatabaseManager.selectFromTeam(1);
+        //HomeworkDatabase.createTableStation();
+        //HomeworkDatabase.exercitiul1();
+        //HomeworkDatabase.createTableEmployee();
+        // HomeworkDatabase.exercitiul2();
+       // HomeworkDatabase.createTableCity();
+        //HomeworkDatabase.exercitiul3();
+        //HomeworkDatabase.createTableStudents();
+       // HomeworkDatabase.createTableGrades();
+        HomeworkDatabase.excercitiul4();
     }
 }

@@ -79,3 +79,53 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2019-05-06  8:52:15
+
+
+-- INSERT INTO EMPLOYEE--
+insert into employee values (12228, 'Rose', 15, 1968);
+insert into employee values (33645, 'Angela', 1, 3443);
+insert into employee values (45692, 'Frank', 17, 1608);
+insert into employee values (56118, 'Patrik', 7, 1345);
+insert into employee values (58725, 'Lisa', 11,2330);
+insert into employee values (74197, 'Kimberley', 16, 4372);
+insert into employee values (78454, 'Bonnie', 8, 1771);
+insert into employee values (83565, 'Michael', 6, 2017);
+insert into employee values (98607, 'Todd', 5, 3396);
+insert into employee values (99989, 'Joe', 9, 3573);
+
+
+--INSERT INTO CITY---
+insert into city values (1,'Tokio','JPN', '2212', 3000000);
+insert into city values (2,'Fukushima', 'JPN', '2232', 1200);
+insert into city values (3, 'Nagasaki', 'JPN', '2212', 400000);
+insert into city values (4, 'Bucuresti', 'RO', '2241', 11111);
+
+
+--INSERT INTO GRADES--
+
+insert into grades values(1,0,9);
+insert into grades values(2,10,19);
+insert into grades values(3,20,29);
+insert into grades values(4,30,39);
+insert into grades values(5,40,49);
+insert into grades values(6,50,59);
+insert into grades values(7,60,69);
+insert into grades values(8,70,79);
+insert into grades values(9,80,89);
+insert into grades values(10,90,100);
+
+---INSERT INTO STUDENDS---
+
+insert into students values(1,'Alex',20);
+insert into students values(2,'Gigi',35);
+insert into students values(3,'Vlad',45);
+insert into students values(4,'Maria',55);
+insert into students values(5,'Elisabeta',65);
+insert into students values(6,'Fiona',75);
+insert into students values(7,'Grig',85);
+insert into students values(8,'Violeta',86);
+insert into students values(9, 'Georgiana', 87);
+insert into students values(10,'Alexandra',89);
+insert into students values(11,'SixtyNine',91);
+insert into students values(12,'AceHood',97);
+insert into students values(13, 'Niky Minaj', 100);
