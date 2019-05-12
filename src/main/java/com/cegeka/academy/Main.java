@@ -32,5 +32,30 @@ public class Main {
         DatabaseManager.updateWithPreparedStatementPlayer();
         DatabaseManager.selectWithStatementPlayersForASpecificTeam("CFR Cluj");
         DatabaseManager.selectWithStatementNumberOfPlayersForATeam();
+
+        HomeworkDatabase.createTables();
+        System.out.println("***********************EX1*************************");
+        HomeworkDatabase.insertWithPrepareStatementStation();
+        HomeworkDatabase.selectCityNamesEndingWithVowels();
+
+        System.out.println("***********************EX2*************************");
+        HomeworkDatabase.insertWithPrepareStatementEmployee();
+        HomeworkDatabase.selectListOfEmployeesNameHavingSalaryGreaterThanAValueAndWhoHaveBeenEmployeesForLessThanGivenMonth(2000,10);
+
+        System.out.println("***********************EX3*************************");
+        HomeworkDatabase.insertWithPrepareStatementCity();
+        HomeworkDatabase.selectTheSumOfThePopulationForAGivenCountry("JPN");
+
+        System.out.println("***********************EX4*************************");
+        HomeworkDatabase.insertWithPrepareStatementStudents();
+        HomeworkDatabase.insertWithPrepareStatementGrades();
+        HomeworkDatabase.selectExerciseFour();
+
+        System.out.println("***********************EX6*************************");
+        HomeworkDatabase.insertWithPrepareStatementHeackers();
+        HomeworkDatabase.insertWithPrepareStatementSubmissions();
+        HomeworkDatabase.selectTheTotalNumberOfUniqueHackersWhoMadeAtLeastOneSubmissionEachDayAndFindTheHackerIdAndNameOfHackerWhoMadeMaximumNumberOfSubmissionsEachDay();
     }
+
+
 }
