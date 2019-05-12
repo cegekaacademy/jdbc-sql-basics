@@ -24,11 +24,12 @@ public class Main {
 
         //TODO CRUD for Player table
         //TODO display all players for a specified team
-        //nr de jucatori ai fiecarei echipe
+        //TODO nr de jucatori ai fiecarei echipe
         DatabaseManager.insertWithPreparedStatementPlayer();
         DatabaseManager.selectWithPreparedStatementPlayer();
         DatabaseManager.updateWithPreparedStatementForPlayer();
         DatabaseManager.deleteWithStatementForPlayer();
-        DatabaseManager.selectWithStatementPlayersForASpecificTeam();
+        DatabaseManager.selectWithStatementPlayersForASpecificTeam("FCSB");
+        DatabaseManager.selectWithStatementNumberOfPlayersForATeam();
     }
 }
