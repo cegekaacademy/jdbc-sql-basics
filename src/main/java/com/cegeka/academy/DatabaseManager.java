@@ -294,16 +294,6 @@ public class DatabaseManager {
         System.out.println("-----------------------------------------");
     }
 
-    private static void showResultSetValuesForPlayers1(ResultSet resultSet) throws SQLException {
-        while (resultSet.next()) {
-            String team=resultSet.getString("t.name");
-            String name = resultSet.getString("p.name");
-            Integer number = resultSet.getInt("p.number");
-            String position = resultSet.getString("p.position");
-
-            System.out.println("Team: "+team + "Echipa: "+ name + ", " + number+","+position);
-        }
-    }
     // TODO 2
     public static void selectWithStatementPlayersForASpecificTeam(String denumireEchipa) throws SQLException, ClassNotFoundException {
         System.out.println("Select with Statement by team");
