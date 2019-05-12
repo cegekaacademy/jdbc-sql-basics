@@ -1,7 +1,6 @@
 package com.cegeka.academy;
 
 
-import java.sql.Date;
 import java.sql.SQLException;
 
 public class Main {
@@ -24,14 +23,14 @@ public class Main {
         DatabaseManager.updateWithPreparedStatement();
 
         //TODO CRUD for Player table
-        //TODO display all players for a specified team
+        //TODO display all players for a specific team
         //TODO display number of players for a team
 
         DatabaseManager.insertWithPreparedStatementPlayer();
         DatabaseManager.selectWithStatementPlayer();
         DatabaseManager.deleteWithPreparedStatementPlayer();
         DatabaseManager.updateWithPreparedStatementPlayer();
-        DatabaseManager.selectWithStatementPlayersForATeam();
+        DatabaseManager.selectWithStatementPlayersForASpecificTeam("CFR Cluj");
         DatabaseManager.selectWithStatementNumberOfPlayersForATeam();
     }
 }
