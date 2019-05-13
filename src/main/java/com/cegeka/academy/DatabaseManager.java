@@ -141,7 +141,46 @@ public class DatabaseManager {
         ResultSet resultSet = preparedStatement.executeQuery();
         System.out.println("Result: " + result + "\n");
         showResultSetValues(resultSet);
+        preparedStatement.close();
+        connection.close();
+        System.out.println("-----------------------------------------");
+    }
 
+    public static void displayTeamPlayersNumber() throws SQLException, ClassNotFoundException {
+        Connection connection = getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "SELECT t.name as team, COUNT(p.id) as number\n" +
+                        "FROM team t left join player p ON p.id_team = t.id\n" +
+                        "GROUP BY(t.name)");
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            String teamName = resultSet.getString("team");
+            Integer playersNumber = resultSet.getInt("number");
+            System.out.println("Team: " + teamName + ", playersNumber:" + playersNumber);
+        }
+        preparedStatement.close();
+        connection.close();
+        System.out.println("-----------------------------------------");
+    }
+
+
+    public static void displayTeamPlayers(String teamName) throws SQLException, ClassNotFoundException {
+        Connection connection = getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "select p.name, p.number, p.position\n" +
+                        "FROM player p join team t on t.id = p.id_team\n" +
+                        "WHERE t.name = ?;");
+        preparedStatement.setString(1, teamName);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            String name = resultSet.getString("name");
+            Integer playerNumber = resultSet.getInt("number");
+            String position = resultSet.getString("position");
+            System.out.println("Player: " + name + ", playerNumber:" + playerNumber + ", position: " + position);
+        }
         preparedStatement.close();
         connection.close();
         System.out.println("-----------------------------------------");
@@ -152,7 +191,6 @@ public class DatabaseManager {
             Long id = resultSet.getLong("id");
             String name = resultSet.getString("name");
             Integer points = resultSet.getInt("points");
-
             System.out.println("Team: " + id + ", " + name + ", " + points);
         }
     }
