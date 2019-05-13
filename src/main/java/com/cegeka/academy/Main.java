@@ -6,23 +6,36 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         //Insert with statement
-        DatabaseManager.insertWithStatement();
-        //Insert with prepared statement
-        DatabaseManager.insertWithPreparedStatement();
-        //Select with statement
-        DatabaseManager.selectWithStatement();
-        //Select with prepared statement
-        DatabaseManager.selectWithPreparedStatement();
-        //Delete with statement
-        DatabaseManager.deleteWithStatement();
-        //Delete with prepared statement
-        DatabaseManager.deleteWithPreparedStatement();
-        //Update with statement
-        DatabaseManager.updateWithStatement();
-        //Update with prepared statement
-        DatabaseManager.updateWithPreparedStatement();
+//        DatabaseManager.insertWithStatement();
+//        //Insert with prepared statement
+//        DatabaseManager.insertWithPreparedStatement();
+//        //Select with statement
+//        DatabaseManager.selectWithStatement();
+//        //Select with prepared statement
+//        DatabaseManager.selectWithPreparedStatement();
+//        //Delete with statement
+//        DatabaseManager.deleteWithStatement();
+//        //Delete with prepared statement
+//        DatabaseManager.deleteWithPreparedStatement();
+//        //Update with statement
+//        DatabaseManager.updateWithStatement();
+//        //Update with prepared statement
+//        DatabaseManager.updateWithPreparedStatement();
 
         //TODO CRUD for Player table
         //TODO display all players for a specified team
+        DatabaseManager.insertWithStatementForPlayer();
+        DatabaseManager.deleteWithStatementForPlayer();
+        DatabaseManager.updateWithPreparedStatementForTeam();
+        DatabaseManager.selectWithPreparedStatementForPlayerAllNumber();
+        DatabaseManager.selectWithPreparedStatementForCountTEAM();
+
+        //HOMEWORK2
+        HomeWorkDatabase.ex1();
+        HomeWorkDatabase.ex2();
+        HomeWorkDatabase.ex3();
+        HomeWorkDatabase.ex4();
+        HomeWorkDatabase.ex5();
+        HomeWorkDatabase.ex6();
     }
 }

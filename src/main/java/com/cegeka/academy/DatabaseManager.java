@@ -11,8 +11,8 @@ public class DatabaseManager {
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager
-                .getConnection("jdbc:mysql://localhost:3306/cegeka",
-                        "root", "admin123!@#");
+                .getConnection("jdbc:mysql://localhost:3306/cegeka_2",
+                        "root", "cegeka");
     }
 
     public static void insertWithStatement() throws SQLException, ClassNotFoundException {
@@ -160,5 +160,109 @@ public class DatabaseManager {
 
             System.out.println("Team: " + id + ", " + name + ", " + points);
         }
+    }
+    private static void showResultSetValuesForPlayer(ResultSet resultSet) throws SQLException {
+        while (resultSet.next()) {
+//            Long id = resultSet.getLong("id");
+            String name = resultSet.getString("name");
+            Integer number = resultSet.getInt("number");
+            Integer id_team = resultSet.getInt("id_team");
+            String position = resultSet.getString("position");
+
+            System.out.println("Player: "  + ", " + name + ", "+number+"," + id_team+","+position);
+        }
+    }
+    private static void showResultSetValuesForPlayerByIdTeam(ResultSet resultSet) throws SQLException {
+        while (resultSet.next()) {
+            Long id = resultSet.getLong("p.id");
+            String name = resultSet.getString("name");
+            Integer number = resultSet.getInt("number");
+            Integer id_team = resultSet.getInt("p.id_team");
+            String team = resultSet.getString("t.name");
+            String position = resultSet.getString("position");
+
+            System.out.println("Player: "  + id+", " + name + ", "+number+"," + id_team+","+team+","+position);
+        }
+    }
+    private static void showResultSetValuesForTeamNumbers(ResultSet resultSet) throws SQLException {
+        while (resultSet.next()) {
+            String name = resultSet.getString("t.name");
+            Integer number = resultSet.getInt("numar");
+
+            System.out.println("Tea,: "  + name + ", "+number);
+        }
+    }
+    public static void insertWithStatementForPlayer() throws SQLException, ClassNotFoundException {
+        System.out.println("Insert with Statement");
+
+        Connection connection = getConnection();
+        Statement statement = connection.createStatement();
+
+        //int result = statement.executeUpdate("insert into team values(1001,'CegekaAcademy',20)");
+        //int result = statement.executeUpdate("insert into team values(null,'CegekaAcademy',20)");
+        int result = statement.executeUpdate("insert into player values(6,'Alibec',24,2,'Attack');");
+        System.out.println("Result: " + result);
+
+        statement.close();
+        connection.close();
+        System.out.println("-----------------------------------------");
+    }
+    public static void deleteWithStatementForPlayer() throws SQLException, ClassNotFoundException {
+        System.out.println("Delete with Statement");
+        Connection connection = getConnection();
+        Statement statement = connection.createStatement();
+
+        int result = statement.executeUpdate("delete from player where id=5");
+        System.out.println("Result: " + result + "\n");
+        statement.close();
+        connection.close();
+        System.out.println("-----------------------------------------");
+    }
+
+    public static void updateWithPreparedStatementForTeam() throws SQLException, ClassNotFoundException {
+        System.out.println("Update with prepared statement");
+        Connection connection = getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("update player set number=? where number=?");
+        preparedStatement.setInt(1, 11);
+        preparedStatement.setInt(2, 10);
+
+        int result = preparedStatement.executeUpdate();
+        preparedStatement = connection.prepareStatement("select * from player");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        System.out.println("Result: " + result + "\n");
+        showResultSetValuesForPlayer(resultSet);
+
+        preparedStatement.close();
+        connection.close();
+        System.out.println("-----------------------------------------");
+    }
+    public static void selectWithPreparedStatementForPlayerAllNumber() throws SQLException, ClassNotFoundException {
+        System.out.println("Select with Prepared Statement");
+        Connection connection = getConnection();
+
+        System.out.println("Select all by id_team");
+        PreparedStatement preparedStatement = connection.prepareStatement("select * from player p,team t where p.id_team = ? and p.id_team=t.id");
+        preparedStatement.setInt(1,1);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        showResultSetValuesForPlayerByIdTeam(resultSet);
+
+
+        preparedStatement.close();
+        connection.close();
+        System.out.println("-----------------------------------------");
+    }
+    public static void selectWithPreparedStatementForCountTEAM() throws SQLException, ClassNotFoundException {
+        System.out.println("Select with Prepared Statement");
+        Connection connection = getConnection();
+
+        System.out.println("Select all by id_team");
+        PreparedStatement preparedStatement = connection.prepareStatement("select t.name,count(t.id) as numar from player p,team t where  and p.id_team=t.id");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        showResultSetValuesForTeamNumbers(resultSet);
+
+
+        preparedStatement.close();
+        connection.close();
+        System.out.println("-----------------------------------------");
     }
 }
