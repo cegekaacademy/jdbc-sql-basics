@@ -1,6 +1,5 @@
 package com.cegeka.academy;
 
-
 import java.sql.SQLException;
 
 public class Main {
@@ -21,8 +20,18 @@ public class Main {
         DatabaseManager.updateWithStatement();
         //Update with prepared statement
         DatabaseManager.updateWithPreparedStatement();
+        //Insert player with prepared statement
+        DatabaseManager.insertPlayerWithPreparedStatement();
+        //Select players with prepared statement
+        DatabaseManager.selectPlayersWithPreparedStatement();
+        //Delete from player where name is Tatarusanu
+        DatabaseManager.deleteFromPlayerWhitPreparedStatement();
+        //Update player
+        DatabaseManager.updatePlayerWithPreparedStatement();
+        //Show players from team FCSB
+        DatabaseManager.selectPlayersFromTeamPreparedStatement();
+        //Number of players from each team
+        DatabaseManager.selectNumberOfPlayersFromEachTeam();
 
-        //TODO CRUD for Player table
-        //TODO display all players for a specified team
     }
 }
