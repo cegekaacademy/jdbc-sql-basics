@@ -11,8 +11,8 @@ public class DatabaseManager {
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager
-                .getConnection("jdbc:mysql://localhost:3306/cegeka",
-                        "root", "admin123!@#");
+                .getConnection("jdbc:mysql://localhost:3306/cegeka_db",
+                        "root", "password");
     }
 
     public static void insertWithStatement() throws SQLException, ClassNotFoundException {
@@ -46,6 +46,7 @@ public class DatabaseManager {
         connection.close();
         System.out.println("-----------------------------------------");
     }
+
 
     public static void selectWithStatement() throws SQLException, ClassNotFoundException {
         System.out.println("Select with Statement");
@@ -151,6 +152,7 @@ public class DatabaseManager {
         connection.close();
         System.out.println("-----------------------------------------");
     }
+
 
     private static void showResultSetValues(ResultSet resultSet) throws SQLException {
         while (resultSet.next()) {
