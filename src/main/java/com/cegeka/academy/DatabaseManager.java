@@ -12,7 +12,7 @@ public class DatabaseManager {
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager
                 .getConnection("jdbc:mysql://localhost:3306/cegeka",
-                        "root", "admin123!@#");
+                        "root", "admin");
     }
 
     public static void insertWithStatement() throws SQLException, ClassNotFoundException {
@@ -152,6 +152,32 @@ public class DatabaseManager {
         System.out.println("-----------------------------------------");
     }
 
+    public static void selectAllPlayersFromTeamWithPreparedStatement() throws SQLException, ClassNotFoundException {
+        System.out.println("Select all players from team with prepared statement");
+        Connection connection = getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("select * from player p, team t where p.id_team = t.id AND t.id = ?");
+        preparedStatement.setLong(1, 1);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        showResultSetValues(resultSet);
+
+        preparedStatement.close();
+        connection.close();
+        System.out.println("-----------------------------------------");
+    }
+
+    public static void countPlayersFromEachTeam() throws SQLException, ClassNotFoundException {
+        System.out.println("Select all players from team with prepared statement");
+        Connection connection = getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("select COUNT(p.id) from player p, team t WHERE p.id_team = t.id");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        showPlayerResultSet(resultSet);
+
+        preparedStatement.close();
+        connection.close();
+        System.out.println("-----------------------------------------");
+    }
+
     private static void showResultSetValues(ResultSet resultSet) throws SQLException {
         while (resultSet.next()) {
             Long id = resultSet.getLong("id");
@@ -159,6 +185,18 @@ public class DatabaseManager {
             Integer points = resultSet.getInt("points");
 
             System.out.println("Team: " + id + ", " + name + ", " + points);
+        }
+    }
+
+    private static void showPlayerResultSet(ResultSet resultSet) throws SQLException {
+        while(resultSet.next()) {
+            Long id = resultSet.getLong("id");
+            String name = resultSet.getString("name");
+            Integer number = resultSet.getInt("number");
+            Integer id_team = resultSet.getInt("id_team");
+            String position = resultSet.getString("position");
+
+            System.out.println(id + ", " + ", " + name + ", " + number + ", " + id_team + ", " + position);
         }
     }
 }

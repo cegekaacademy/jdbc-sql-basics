@@ -22,6 +22,9 @@ public class Main {
         //Update with prepared statement
         DatabaseManager.updateWithPreparedStatement();
 
+        DatabaseManager.selectAllPlayersFromTeamWithPreparedStatement();
+
+        DatabaseManager.countPlayersFromEachTeam();
         //TODO CRUD for Player table
         //TODO display all players for a specified team
     }
